@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Manufacture:ManuSystem
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:Manufacture="https://www.manufacture.org/DSL"
+    xsi:schemaLocation="https://www.manufacture.org/DSL Assignment1.ecore"
+    name="Chair">
+  <transforms
+      hasType="//@owns.1"/>
+  <transforms
+      hasType="//@owns.0"/>
+  <ConsistsOf
+      xsi:type="Manufacture:Storage"
+      name="RawMaterial"
+      stores="//@owns.0 //@owns.1"/>
+  <ConsistsOf
+      xsi:type="Manufacture:TransStep"
+      name="TransRaw"
+      responsible="//@manages.0">
+    <input>
+      <collects
+          xsi:type="Manufacture:BiCon"
+          SelectTwo="//@owns.0 //@owns.1"/>
+      <collects
+          xsi:type="Manufacture:UniCon"/>
+    </input>
+    <output/>
+  </ConsistsOf>
+  <manages name="Tina"/>
+  <owns name="Metal"/>
+  <owns name="Wood"/>
+</Manufacture:ManuSystem>

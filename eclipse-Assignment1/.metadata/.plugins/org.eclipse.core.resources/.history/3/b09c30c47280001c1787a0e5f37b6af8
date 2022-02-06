@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Manufacture:ManuSystem
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:Manufacture="https://www.manufacture.org/DSL"
+    xsi:schemaLocation="https://www.manufacture.org/DSL Assignment1.ecore">
+  <FirstStep
+      xsi:type="Manufacture:ManuStep"
+      Produces="//@intermediateproducts.0"
+      speed="5.0"
+      person="Lisa"/>
+  <intermediateproducts/>
+  <workpiece
+      name="Willow"
+      kilogram="100"
+      cubic="10"
+      type="Wood"/>
+  <workpiece
+      name="Poplar"
+      kilogram="200"
+      cubic="5"
+      type="Wood"/>
+  <storage WorkPieceStores="//@workpiece.0"
+      type="Wood"/>
+  <materialconditioner
+      Collects="//@storage.0"/>
+</Manufacture:ManuSystem>

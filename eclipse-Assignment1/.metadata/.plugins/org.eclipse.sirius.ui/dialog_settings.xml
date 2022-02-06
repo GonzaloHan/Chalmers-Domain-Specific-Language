@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExportRepresentationsAsImagesDialog">
+		<item key="ExportRepresentationsAsImagesDialog.imageFormat" value="PNG"/>
+		<list key="ExportRepresentationsAsImagesDialog.file">
+			<item value="/Users/yihan_yang/eclipse-workspace"/>
+			<item value="/Users/yihan_yang/eclipse-workspace/:Users:yihan_yang:eclipse-Assignment1:Assignment1:model: Assignment1 class diagram.png"/>
+		</list>
+	</section>
+</section>

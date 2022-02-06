@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Manufacture:ManuSystem
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:Manufacture="https://www.manufacture.org/DSL"
+    xsi:schemaLocation="https://www.manufacture.org/DSL Assignment1.ecore"
+    name="ChairProduct">
+  <transforms/>
+  <ConsistsOf
+      xsi:type="Manufacture:Storage"
+      name="RawMaterial"
+      responsible="//@manages.0"/>
+  <manages name="Tina"/>
+  <manages name="Karen"/>
+  <manages name="Roy"/>
+  <owns name="Metal"/>
+  <owns name="Wood"/>
+</Manufacture:ManuSystem>

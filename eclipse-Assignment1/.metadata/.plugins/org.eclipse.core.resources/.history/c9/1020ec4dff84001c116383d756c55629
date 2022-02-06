@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Manufacture:ManuSystem
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:Manufacture="https://www.manufacture.org/DSL"
+    xsi:schemaLocation="https://www.manufacture.org/DSL Assignment1.ecore"
+    name="Chair">
+  <transforms
+      hasType="//@owns.0"/>
+  <transforms
+      hasType="//@owns.1"/>
+  <transforms
+      hasType="//@owns.2"/>
+  <ConsistsOf
+      xsi:type="Manufacture:TransStep"/>
+  <ConsistsOf
+      xsi:type="Manufacture:Storage"
+      name="RawMaterial"
+      responsible="//@manages.0"
+      stores="//@owns.0 //@owns.1 //@owns.2"/>
+  <ConsistsOf
+      xsi:type="Manufacture:TransStep"
+      name="TransRaw">
+    <input name="Wood&amp;Metal">
+      <collects
+          xsi:type="Manufacture:BiCon"
+          SelectTwo="//@ConsistsOf.2/@input.0/@selects.0 //@ConsistsOf.2/@input.0/@selects.1"/>
+      <selects
+          name="TransWood"/>
+      <selects
+          name="TransMetal"/>
+    </input>
+    <input name="NoPlastic">
+      <collects
+          xsi:type="Manufacture:UniCon"
+          SelectOne="//@ConsistsOf.2/@input.1/@selects.0"/>
+      <selects
+          name="TransPlastic"/>
+    </input>
+    <output/>
+    <output/>
+  </ConsistsOf>
+  <manages name="Tina"/>
+  <owns name="Wood"/>
+  <owns name="Plastic"/>
+  <owns name="Iron"/>
+</Manufacture:ManuSystem>

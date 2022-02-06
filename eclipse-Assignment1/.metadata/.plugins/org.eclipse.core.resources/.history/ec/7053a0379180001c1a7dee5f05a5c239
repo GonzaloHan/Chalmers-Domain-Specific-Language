@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Manufacture:ManuSystem
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:Manufacture="https://www.manufacture.org/DSL"
+    xsi:schemaLocation="https://www.manufacture.org/DSL Assignment1.ecore">
+  <FirstStep
+      xsi:type="Manufacture:ManuStep"
+      Produces="//@intermediateproducts.0"
+      speed="5.0"
+      person="Lisa"
+      Uses="//@materialconditioner.0 //@materialconditioner.1"/>
+  <FirstStep
+      xsi:type="Manufacture:TransStep"
+      Produces="//@intermediateproducts.0"
+      speed="10.0"
+      person="Jack"/>
+  <FirstStep
+      xsi:type="Manufacture:QAStep"
+      Produces="//@intermediateproducts.0"
+      speed="2.0"
+      person="Rose"/>
+  <FirstStep
+      xsi:type="Manufacture:HierarchyStep">
+    <Contains>
+      <FirstStep
+          xsi:type="Manufacture:ManuStep"
+          Produces="//@FirstStep.3/@Contains/@intermediateproducts.0"
+          speed="5.0"
+          person="Lisa"
+          Uses="//@materialconditioner.0 //@materialconditioner.1"/>
+      <FirstStep
+          xsi:type="Manufacture:TransStep"
+          Produces="//@FirstStep.3/@Contains/@intermediateproducts.0"
+          person="Jack"/>
+      <intermediateproducts
+          name="PlasticMetal001"/>
+      <materialconditioner
+          xsi:type="Manufacture:UniCon"
+          Collects="//@storage.1"/>
+      <materialconditioner
+          xsi:type="Manufacture:BiCon"
+          Collects="//@storage.0 //@storage.2"
+          OrStatus="true"/>
+    </Contains>
+  </FirstStep>
+  <intermediateproducts
+      name="WoodMetal001"/>
+  <workpiece
+      name="Polyester"
+      kilogram="5"
+      cubic="5"
+      type="Plastic"/>
+  <workpiece
+      name="Iron"
+      kilogram="100"
+      cubic="10"
+      type="Metal"/>
+  <workpiece
+      name="Poplar"
+      kilogram="20"
+      cubic="5"
+      type="Wood"/>
+  <workpiece
+      name="Willow"
+      kilogram="10"
+      cubic="5"
+      type="Wood"/>
+  <storage WorkPieceStores="//@workpiece.1"
+      type="Metal"/>
+  <storage WorkPieceStores="//@workpiece.2 //@workpiece.3"
+      type="Wood"/>
+  <storage WorkPieceStores="//@workpiece.0"
+      type="Plastic"/>
+  <materialconditioner
+      xsi:type="Manufacture:BiCon"
+      Collects="//@storage.0 //@storage.1"
+      AndStatus="true"/>
+  <materialconditioner
+      xsi:type="Manufacture:UniCon"
+      Collects="//@storage.2"/>
+</Manufacture:ManuSystem>

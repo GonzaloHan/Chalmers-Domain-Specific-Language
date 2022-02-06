@@ -1,0 +1,46 @@
+/**
+ */
+package Manufacture;
+
+import org.eclipse.emf.ecore.EObject;
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Out Put Work Piece</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link Manufacture.OutPutWorkPiece#getOutputType <em>Output Type</em>}</li>
+ * </ul>
+ *
+ * @see Manufacture.ManufacturePackage#getOutPutWorkPiece()
+ * @model
+ * @generated
+ */
+public interface OutPutWorkPiece extends EObject {
+	/**
+	 * Returns the value of the '<em><b>Output Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Output Type</em>' reference.
+	 * @see #setOutputType(WorkPieceType)
+	 * @see Manufacture.ManufacturePackage#getOutPutWorkPiece_OutputType()
+	 * @model
+	 * @generated
+	 */
+	WorkPieceType getOutputType();
+
+	/**
+	 * Sets the value of the '{@link Manufacture.OutPutWorkPiece#getOutputType <em>Output Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Output Type</em>' reference.
+	 * @see #getOutputType()
+	 * @generated
+	 */
+	void setOutputType(WorkPieceType value);
+
+} // OutPutWorkPiece

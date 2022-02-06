@@ -1,0 +1,68 @@
+/**
+ */
+package Manufacture;
+
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Bi Con</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link Manufacture.BiCon#isBiStatus <em>Bi Status</em>}</li>
+ *   <li>{@link Manufacture.BiCon#getSelectTwo <em>Select Two</em>}</li>
+ * </ul>
+ *
+ * @see Manufacture.ManufacturePackage#getBiCon()
+ * @model
+ * @generated
+ */
+public interface BiCon extends MaterialConditioner {
+	/**
+	 * Returns the value of the '<em><b>Bi Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Bi Status</em>' attribute.
+	 * @see #setBiStatus(boolean)
+	 * @see Manufacture.ManufacturePackage#getBiCon_BiStatus()
+	 * @model required="true"
+	 * @generated
+	 */
+	boolean isBiStatus();
+
+	/**
+	 * Sets the value of the '{@link Manufacture.BiCon#isBiStatus <em>Bi Status</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Bi Status</em>' attribute.
+	 * @see #isBiStatus()
+	 * @generated
+	 */
+	void setBiStatus(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Select Two</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Select Two</em>' reference.
+	 * @see #setSelectTwo(WorkPiece)
+	 * @see Manufacture.ManufacturePackage#getBiCon_SelectTwo()
+	 * @model
+	 * @generated
+	 */
+	WorkPiece getSelectTwo();
+
+	/**
+	 * Sets the value of the '{@link Manufacture.BiCon#getSelectTwo <em>Select Two</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Select Two</em>' reference.
+	 * @see #getSelectTwo()
+	 * @generated
+	 */
+	void setSelectTwo(WorkPiece value);
+
+} // BiCon

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Manufacture:ManuSystem
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:Manufacture="https://www.manufacture.org/DSL"
+    xsi:schemaLocation="https://www.manufacture.org/DSL Assignment1.ecore"
+    responsible="//@manages.0"
+    starts="//@ConsistsOf.1"
+    ends="//@ConsistsOf.7"
+    name="Chair">
+  <transforms
+      hasType="//@owns.0"/>
+  <transforms
+      hasType="//@owns.1"/>
+  <transforms
+      hasType="//@owns.2"/>
+  <ConsistsOf
+      xsi:type="Manufacture:TransStep"/>
+  <ConsistsOf
+      xsi:type="Manufacture:Storage"
+      name="RawMaterial"
+      responsible="//@manages.0"
+      stores="//@owns.0 //@owns.1 //@owns.2"/>
+  <ConsistsOf
+      xsi:type="Manufacture:TransStep"
+      name="TransRaw"
+      responsible="//@manages.0"
+      move="//@ConsistsOf.2 //@ConsistsOf.4"
+      speed="5.0">
+    <input name="Wood&amp;Metal">
+      <collects
+          xsi:type="Manufacture:BiCon"
+          SelectTwo="//@ConsistsOf.2/@input.0/@selects.0 //@ConsistsOf.2/@input.0/@selects.1"/>
+      <selects
+          name="TransWood"/>
+      <selects
+          name="TransMetal"/>
+    </input>
+    <input name="NoPlastic">
+      <collects
+          xsi:type="Manufacture:UniCon"
+          SelectOne="//@ConsistsOf.2/@input.1/@selects.0"/>
+      <selects
+          name="TransPlastic"/>
+    </input>
+    <output
+        outputType="//@owns.0"
+        name="TransedWood"
+        inputSelect="//@ConsistsOf.2/@input.0/@selects.0"/>
+    <output
+        outputType="//@owns.2"
+        name="TransedMetal"
+        inputSelect="//@ConsistsOf.2/@input.0/@selects.1"/>
+    <output
+        outputType="//@owns.1"
+        name="NotTransedPlastic"
+        inputSelect="//@ConsistsOf.2/@input.1/@selects.0"/>
+  </ConsistsOf>
+  <ConsistsOf
+      xsi:type="Manufacture:HierarchyStep"
+      name="HierarchySystem"
+      responsible="//@manages.0"
+      speed="5.0">
+    <Contains
+        name="Chair legs">
+      <ConsistsOf
+          xsi:type="Manufacture:TransStep"/>
+      <ConsistsOf
+          xsi:type="Manufacture:ManuStep"/>
+    </Contains>
+  </ConsistsOf>
+  <ConsistsOf
+      xsi:type="Manufacture:ManuStep"
+      name="ChairManu"/>
+  <ConsistsOf
+      xsi:type="Manufacture:TransStep"
+      name="Trans2"/>
+  <ConsistsOf
+      xsi:type="Manufacture:QAStep"
+      name="QAit"/>
+  <ConsistsOf
+      xsi:type="Manufacture:Storage"
+      name="ProductStorage"
+      responsible="//@manages.0"
+      stores="//@owns.3 //@owns.4 //@owns.5"/>
+  <manages name="Tina"/>
+  <owns name="Wood"/>
+  <owns name="Plastic"/>
+  <owns name="Metal"/>
+  <owns name="WoodProduct"/>
+  <owns name="MetalProduct"/>
+  <owns name="PlasticProduct"/>
+</Manufacture:ManuSystem>

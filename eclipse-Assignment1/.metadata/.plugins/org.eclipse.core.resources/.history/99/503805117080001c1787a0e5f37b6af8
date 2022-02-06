@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Manufacture" nsURI="https://www.manufacture.org/DSL" nsPrefix="Manufacture">
+  <eClassifiers xsi:type="ecore:EClass" name="ManuSystem" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="FirstStep" upperBound="-1"
+        eType="#//Step" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="intermediateproducts" upperBound="-1"
+        eType="#//IntermediateProduct" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="workpiece" upperBound="-1"
+        eType="#//WorkPiece" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="storage" upperBound="-1"
+        eType="#//Storage" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="materialconditioner" upperBound="-1"
+        eType="#//MaterialConditioner" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Step">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Procedures" eType="#//IntermediateProduct"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="speed" ordered="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="person" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="NextStep" unique="false"
+        upperBound="-1" eType="#//Step"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="uses" upperBound="-1" eType="#//MaterialConditioner"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkPiece" eSuperTypes="#//Usable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kilogram" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cubic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Storage">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="WorkPieceStores" eType="#//WorkPiece"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntermediateProduct" eSuperTypes="#//Usable"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Usable" eSuperTypes="#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HierarchyStep" eSuperTypes="#//Step">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Contains" eType="#//ManuSystem"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ManuStep" eSuperTypes="#//Step"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TransStep" eSuperTypes="#//Step"/>
+  <eClassifiers xsi:type="ecore:EClass" name="QAStep" eSuperTypes="#//Step"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MaterialConditioner">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collects" eType="#//Storage"/>
+  </eClassifiers>
+</ecore:EPackage>

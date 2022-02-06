@@ -1,0 +1,18 @@
+/**
+ */
+package Manufacture;
+
+import org.eclipse.emf.ecore.EObject;
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Material Conditioner</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ *
+ * @see Manufacture.ManufacturePackage#getMaterialConditioner()
+ * @model
+ * @generated
+ */
+public interface MaterialConditioner extends EObject {
+} // MaterialConditioner

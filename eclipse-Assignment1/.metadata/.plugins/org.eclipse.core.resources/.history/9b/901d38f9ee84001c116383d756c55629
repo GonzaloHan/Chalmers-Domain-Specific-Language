@@ -1,0 +1,156 @@
+/**
+ */
+package Manufacture.impl;
+
+import Manufacture.ManufacturePackage;
+import Manufacture.Storage;
+import Manufacture.WorkPiece;
+
+import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Storage</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link Manufacture.impl.StorageImpl#getStores <em>Stores</em>}</li>
+ * </ul>
+ *
+ * @generated
+ */
+public class StorageImpl extends ElementImpl implements Storage {
+	/**
+	 * The cached value of the '{@link #getStores() <em>Stores</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStores()
+	 * @generated
+	 * @ordered
+	 */
+	protected WorkPiece stores;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StorageImpl() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return ManufacturePackage.Literals.STORAGE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public WorkPiece getStores() {
+		if (stores != null && stores.eIsProxy()) {
+			InternalEObject oldStores = (InternalEObject)stores;
+			stores = (WorkPiece)eResolveProxy(oldStores);
+			if (stores != oldStores) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ManufacturePackage.STORAGE__STORES, oldStores, stores));
+			}
+		}
+		return stores;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public WorkPiece basicGetStores() {
+		return stores;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStores(WorkPiece newStores) {
+		WorkPiece oldStores = stores;
+		stores = newStores;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ManufacturePackage.STORAGE__STORES, oldStores, stores));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case ManufacturePackage.STORAGE__STORES:
+				if (resolve) return getStores();
+				return basicGetStores();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case ManufacturePackage.STORAGE__STORES:
+				setStores((WorkPiece)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case ManufacturePackage.STORAGE__STORES:
+				setStores((WorkPiece)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case ManufacturePackage.STORAGE__STORES:
+				return stores != null;
+		}
+		return super.eIsSet(featureID);
+	}
+
+} //StorageImpl
