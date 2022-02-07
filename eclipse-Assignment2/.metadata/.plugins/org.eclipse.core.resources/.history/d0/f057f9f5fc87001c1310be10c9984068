@@ -284,6 +284,7 @@
   <uses name="MetalProduct"/>
   <uses name="CutMetal"/>
   <uses name="CutWood"/>
+  <uses name="DeletIT"/>
   <transforms
       hasType="//@uses.1"/>
   <transforms

@@ -13,7 +13,7 @@
       xsi:type="com.chalmers:StoragePoint"
       transition="//@consistsOf.1"
       name="RawMaterialStorage"
-      responsible="//@staff.1"
+      responsible="//@staff.0"
       stores="//@uses.0 //@uses.1"/>
   <consistsOf
       xsi:type="com.chalmers:TransportStep"

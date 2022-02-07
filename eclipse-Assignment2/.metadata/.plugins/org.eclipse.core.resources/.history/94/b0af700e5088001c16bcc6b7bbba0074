@@ -17,11 +17,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="ManufacturingStep" eSuperTypes="#//Step"/>
   <eClassifiers xsi:type="ecore:EClass" name="ManufacturingSystem">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="MustOneResponsible NotTheSame"/>
+      <details key="constraints" value="NotTheSame NoInTransition NoOutTransition"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="MustOneResponsible" value="self.responsible->size() = 1 "/>
-      <details key="NotTheSame" value="not self.consistsOf.responsible->includes(self.responsible) "/>
+      <details key="NotTheSame" value="not self.consistsOf.responsible -> select(e|e.oclIsTypeOf(Step)) ->includes(self.responsible) "/>
+      <details key="NoInTransition" value="not self.consistsOf.transition->includesAll(start)"/>
+      <details key="NoOutTransition" value="self.end.transition -> size() = 0"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="consistsOf" lowerBound="1"
         upperBound="-1" eType="#//ManufacturingSystemElement" containment="true"/>
@@ -41,6 +42,16 @@
   <eClassifiers xsi:type="ecore:EClass" name="TransportStep" eSuperTypes="#//Step"/>
   <eClassifiers xsi:type="ecore:EClass" name="QualityAssuranceStep" eSuperTypes="#//Step"/>
   <eClassifiers xsi:type="ecore:EClass" name="Step" abstract="true" eSuperTypes="#//ManufacturingSystemElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="CompatibleType SpeedUp MustOneResponsible CompatibleInput CompatibleOutput"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="CompatibleType" value="&#xA;&#x9;&#x9;if (self.transition.oclIsTypeOf(StoragePoint)->includes(false))&#xA;&#x9;&#x9;then&#xA;&#x9;&#x9;WorkPieceCondition.allInstances()->select(self.output.outputTypes->includes(requiresType))&#xA;&#x9;&#x9;->intersection(&#xA;&#x9;&#x9;&#x9;Step.allInstances()->select(name->includesAll(self.transition.name)).input -> select(e| e.oclIsTypeOf(WorkPieceCondition))&#xA;&#x9;&#x9;) -> size() &lt;> 0&#xA;&#x9;&#x9;else self.transition &lt;> null --just need a always true condition&#xA;&#x9;&#x9;endif"/>
+      <details key="SpeedUp" value="&#xA;&#x9;&#x9;if (Step.allInstances()->select(transition.name->includes(self.name))->isEmpty() = false &#xA;&#x9;&#x9;&#x9;and&#xA;&#x9;&#x9;&#x9;Step.allInstances()->select(transition.name->includes(self.name)).oclIsTypeOf(CompositeManufacturingStep)->asSequence()->first()=false&#xA;&#x9;&#x9;)&#xA;&#x9;&#x9;then&#xA;&#x9;&#x9;&#x9;self.speed >=  Step.allInstances()->select(transition.name->includes(self.name)).speed->sum()&#xA;&#x9;&#x9;else self.speed &lt;> 0&#xA;&#x9;&#x9;endif"/>
+      <details key="MustOneResponsible" value="self.responsible->size() = 1 "/>
+      <details key="CompatibleInput" value="&#xA;&#x9;&#x9;ManufacturingSystem.allInstances().start.stores -> includesAll(self.input->selectByType(WorkPieceCondition).requiresType)"/>
+      <details key="CompatibleOutput" value="&#xA;&#x9;&#x9;ManufacturingSystem.allInstances().end.stores -> includesAll(self.output.outputTypes)"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="speed" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="input" lowerBound="1" upperBound="-1"
@@ -53,19 +64,10 @@
       <details key="constraints" value="MoreThanOneStep LessThanThreeStep"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="MoreThanOneStep" value="consistsOfSteps -> size() >= 1"/>
-      <details key="LessThanThreeStep" value="consistsOfSteps -> size() &lt;= 3"/>
+      <details key="MoreThanOneStep" value="Step.allInstances()->select(responsible=self) -> size() >= 1"/>
+      <details key="LessThanThreeStep" value="Step.allInstances()->select(responsible=self) -> size() &lt;= 3"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="consistsOfSteps" ordered="false"
-        upperBound="-1" eType="#//Step" volatile="true" derived="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-        <details key="derivation" value="Step.allInstances()->select(responsible=self) "/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/OCL/Collection">
-        <details key="nullFree" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="BinaryType">
     <eLiterals name="and"/>
@@ -80,10 +82,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ManufacturingSystemElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="MustOneResponsible"/>
+      <details key="constraints" value="NoHierachyStep"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="MustOneResponsible" value="self.responsible->size() = 1 "/>
+      <details key="NoHierachyStep" value="ManufacturingSystem.allInstances()->select(consistsOf->includes(self)).consistsOf->includesAll(self.transition)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transition" upperBound="-1"
         eType="#//ManufacturingSystemElement"/>

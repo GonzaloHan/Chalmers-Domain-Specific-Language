@@ -17,7 +17,7 @@
       stores="//@uses.0 //@uses.1"/>
   <consistsOf
       xsi:type="com.chalmers:TransportStep"
-      transition="//@consistsOf.2"
+      transition="//@consistsOf.0"
       name="StartStorageTransport"
       responsible="//@staff.3"
       speed="20">
